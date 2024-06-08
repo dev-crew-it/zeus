@@ -6,6 +6,7 @@ import EmbeddedLND from '../backends/EmbeddedLND';
 // Core Lightning
 import CLightningREST from '../backends/CLightningREST';
 import Spark from '../backends/Spark';
+import CLNRest from '../backends/CLNRest';
 // Eclair
 import Eclair from '../backends/Eclair';
 // Custodial
@@ -15,6 +16,7 @@ class BackendUtils {
     lnd: LND;
     lightningNodeConnect: LightningNodeConnect;
     embeddedLND: EmbeddedLND;
+    clnRest: CLNRest;
     clightningREST: CLightningREST;
     spark: Spark;
     eclair: Eclair;
@@ -23,6 +25,8 @@ class BackendUtils {
         this.lnd = new LND();
         this.lightningNodeConnect = new LightningNodeConnect();
         this.embeddedLND = new EmbeddedLND();
+        this.clnRest = new CLNRest();
+        // Deprecated
         this.clightningREST = new CLightningREST();
         this.spark = new Spark();
         this.eclair = new Eclair();
@@ -46,6 +50,8 @@ class BackendUtils {
                 return this.eclair;
             case 'lndhub':
                 return this.lndHub;
+            case 'cln-rest':
+                return this.clnRest;
             default:
                 return this.lnd;
         }
