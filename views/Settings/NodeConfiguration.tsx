@@ -73,9 +73,9 @@ interface NodeConfigurationProps {
 interface NodeConfigurationState {
     node: Node | null;
     nickname: string; //
-    host: string; // lnd, c-lightning-REST
-    port: string; // lnd, c-lightning-REST
-    macaroonHex: string; // lnd, c-lightning-REST
+    host: string; // lnd, c-lightning-REST, cln-rest
+    port: string; // lnd, c-lightning-REST, cln-rest
+    macaroonHex: string; // lnd, c-lightning-REST, cln-rest
     url: string; // spark, eclair
     accessKey: string; // spark
     lndhubUrl: string; // lndhub
@@ -1343,7 +1343,8 @@ export default class NodeConfiguration extends React.Component<
                             </>
                         )}
                         {(implementation === 'lnd' ||
-                            implementation === 'c-lightning-REST') && (
+                            implementation === 'c-lightning-REST' ||
+                            implementation === 'cln-rest') && (
                             <>
                                 <Text
                                     style={{
